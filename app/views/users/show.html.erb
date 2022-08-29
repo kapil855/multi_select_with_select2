@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+<div class="row mt-5">
+  <div class="col-md-6">
+    <div class="card shadow">
+      <div class="card-body">
+        <p>
+          <strong>First name:</strong>
+          <%= @user.first_name %>
+        </p>
+
+        <p>
+          <strong>Last name:</strong>
+          <%= @user.last_name %>
+        </p>
+
+        <p>
+          <strong>Course:</strong>
+          <%= @user.course.join(',') %>
+        </p>
+
+        <p>
+          <% if @user.image.attached? %>
+            <%= image_tag @user.image, class: "w-25" %>
+          <% end %>
+        </p>
+
+        <%= link_to 'Edit', edit_user_path(@user), data: {turbolinks: false}, class:'btn btn-secondary' %> |
+        <%= link_to 'Back', users_path, data: {turbolinks: false}, class: 'btn btn-outline-primary' %>
+      </div>
+    </div>
+  </div>
+</div>
+

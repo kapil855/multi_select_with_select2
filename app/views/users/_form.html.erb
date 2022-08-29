@@ -1,0 +1,58 @@
+<%= form_with(model: user) do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :course %>
+    <%= form.select :course, options_for_select(User::COURSE, selected: @user.course.map { |course| course }), {include_hidden: false}, {class: "select form-control", multiple: true} %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :image %>
+    <%= form.file_field :image, class: 'form-control image' %>
+  </div>
+
+  <div class="actions mt-4">
+    <%= form.submit class: 'btn btn-primary btn-block' %>
+  </div>
+<% end %>
+
+
+
+<script>
+// $(document).ready(function(){
+//   $(".image").change(function(){
+//     var formData = new FormData(),
+//     $input = $(this);
+    
+//     formData.append('user[image]', $input[0].files[0]);
+
+//     $.ajax({
+//       type: 'POST',
+//       url: '/upload_image',
+//       data: formData,
+//       cache: false,
+//       contentType: false,
+//       processData: false
+//     });
+//   });
+// });
+</script>
+
